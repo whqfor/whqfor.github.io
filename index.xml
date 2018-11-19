@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>whqfor.github.io</title>
+    <link>https://whqfor.github.io/</link>
+    <description>Recent content on whqfor.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>whqfor</copyright>
+    <lastBuildDate>Thu, 01 Nov 2018 14:50:23 +0800</lastBuildDate>
+    
+        <atom:link href="https://whqfor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pod私有库搭建及podspec编辑简介</title>
+      <link>https://whqfor.github.io/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Thu, 01 Nov 2018 14:50:23 +0800</pubDate>
+      
+      <guid>https://whqfor.github.io/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/</guid>
+      
+        <description>
+
+&lt;h3 id=&#34;简述&#34;&gt;简述&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Cocoapods&lt;/code&gt;是个非常好的&lt;code&gt;iOS&lt;/code&gt;依赖管理工具，可以方便的进行管理和更新使用到的第三方库，以及在做代码模组件化管理的时候，可以用它来管理私有库。
+&lt;code&gt;Cocoapods&lt;/code&gt;的&lt;a href=&#34;https://segmentfault.com/a/1190000011428874&#34;&gt;安装&lt;/a&gt;、&lt;a href=&#34;https://segmentfault.com/a/1190000012269216&#34;&gt;使用&lt;/a&gt;比较基础，这里不再赘述，网络上有很多资料。这篇文章主要介绍在&lt;code&gt;Git&lt;/code&gt;环境下如何搭建自己的私有仓库，用以管理项目中的小模块。
+在搭建自己的私有库之前先看一下pod的工作过程：
+&lt;img src=&#34;https://image-static.segmentfault.com/385/861/3858613500-5a38be353416c&#34; alt=&#34;pod工作工程&#34; /&gt;
+当我们执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod search afnetworking&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;的时候会先搜索&lt;code&gt;本地repo&lt;/code&gt;，其所在路径是&lt;code&gt;~/.cocoapod/repos&lt;/code&gt;，如果本地没有则会默认执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;pod setup/pod update&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;去更新repo（将podspec文件下载到本地），这个过程比较慢，也可以自己去&lt;a href=&#34;https://github.com/CocoaPods/Specs&#34;&gt;github&lt;/a&gt;下载完成后放到上面路径中。
+&lt;code&gt;cocoapods&lt;/code&gt;其实就是利用所维护的podspec文件，在使用方和提供方之间建立起一个桥梁，并利用与项目关联的pod项目去维护所有第三方。
+如果想搭建一个自己的私有仓库，则在本地需要搭建一个自己的&lt;code&gt;repo&lt;/code&gt;仓库来管理保存自己的podspec文件。&lt;/p&gt;
+
+&lt;h3 id=&#34;创建步骤&#34;&gt;创建步骤&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;1.创建私有的Specs git库
+2.在私有库项目中创建podspec文件
+3.验证私有库的合法性
+4.提交私有库的版本信息
+5.向Spec Repo提交podspec
+6.更新维护podspec
+7.示例地址&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;1-创建私有的specs-git库&#34;&gt;1.创建私有的Specs git库&lt;/h4&gt;
+
+&lt;p&gt;将私有&lt;code&gt;repo&lt;/code&gt; 添加到 &lt;code&gt;Cocoapods&lt;/code&gt;的格式是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo add [repo名] [repo git地址]&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;举例：
+a.首先创建一个&lt;code&gt;Git&lt;/code&gt;仓库地址，例如&lt;code&gt;https://github.com/xxx/HQSpecs&lt;/code&gt;，然后将其添加到&lt;code&gt;Cocoapods&lt;/code&gt;列表中（多个工程podspec可以共用一个私有repo）。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo add HQSpecs https://github.com/whqfor/HQSpecs.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;验证是否创建成功可以执行查看&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo list&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;创建成功后list中即会展现出刚才创建的repo&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;HQSpecs
+- Type: git (master)
+- URL:  https://github.com/xxx/HQSpecs.git
+- Path: /Users/whqfor/.cocoapods/repos/HQSpecs
+
+master
+- Type: git (master)
+- URL:  https://github.com/CocoaPods/Specs.git
+- Path: /Users/whqfor/.cocoapods/repos/master&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;目前本地的私有repo是个空文件，先不要着急，一会还会对它进行操作，不需要手动更改。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-在私有库项目中创建podspec文件&#34;&gt;2.在私有库项目中创建podspec文件&lt;/h4&gt;
+
+&lt;p&gt;按照&lt;a href=&#34;https://guides.cocoapods.org/syntax/podspec.html&#34;&gt;官方教程&lt;/a&gt;来编辑即可，下面是在写本文时创建的示例podspec&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;Pod::Spec.new do |s|
+
+  s.name         = &amp;#34;TNetwork&amp;#34;
+  s.version      = &amp;#34;0.0.1&amp;#34;
+  s.summary      = &amp;#34;TNetwork base on AFNetworking and YTKNetwork.&amp;#34;
+  s.homepage     = &amp;#34;https://github.com/whqfor/TNetwork&amp;#34;
+  s.license      = &amp;#39;Code is MIT, then custom font licenses.&amp;#39;
+  s.author       = { &amp;#34;whqfor&amp;#34; =&amp;gt; &amp;#34;whqfor@126.com&amp;#34; }
+
+  s.source       = { :git =&amp;gt; &amp;#34;git@github.com:whqfor/TNetwork.git&amp;#34;, :tag =&amp;gt; &amp;#34;#{s.version}&amp;#34; }
+  s.source_files  = &amp;#34;TNetwork/**/*.{h,m}&amp;#34;
+  s.public_header_files = &amp;#39;TNetwork/**/*.h&amp;#39;
+  s.requires_arc = true
+  s.ios.deployment_target = &amp;#34;8.0&amp;#34;
+  s.frameworks = &amp;#34;Foundation&amp;#34;, &amp;#34;UIKit&amp;#34;
+
+  s.user_target_xcconfig = { &amp;#39;CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES&amp;#39; =&amp;gt; &amp;#39;YES&amp;#39; }
+
+  s.dependency &amp;#34;AFNetworking&amp;#34;, &amp;#34;~&amp;gt; 3.0&amp;#34;
+  s.dependency &amp;#34;YTKNetwork&amp;#34;
+
+end&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;如果不清楚的话，网上相应的文章挺多的，这一步并不复杂。
+编写完之后放到git仓库下即可，和工程同级目录。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-验证私有库的合法性&#34;&gt;3.验证私有库的合法性&lt;/h4&gt;
+
+&lt;p&gt;这是我在创建私有库时遇到问题最多的地方，尝试编译了半天。
+在本地git仓库目录下，选择执行如下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;pod lib lint （从本地验证你的pod能否通过验证）
+pod spec lint （从本地和远程验证你的pod能否通过验证）
+
+pod lib lint --verbose （加--verbose可以显示详细的检测过程，出错时会显示详细的错误信息）
+pod lib lint --allow-warnings (允许警告，用来解决由于代码中存在警告导致不能通过校验的问题)
+pod lib lint --help （查看所有可选参数，可选参数可以加多个）&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这篇文章主要是介绍搭建私有仓库，所以首先验证本地pod是否能通过&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod lib lint --allow-warnings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;执行这个命令的过程可能会花点时间，此外也会遇到各种错误。只需关注错误信息即可，最常见的是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;error: include of non-modular header inside framework module&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;下面说下我在验证时总结的经验。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;1. 引入类，使用@class XXX; 不能像平时一样直接引入.h，可以在.m文件中引入。
+2. 引入协议，使用@protocol XXX; 。
+3. 当需要继承别的文件时，按照@class XXX；引入会报错，此时只能引入.h文件。&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;针对第3条，参考&lt;a href=&#34;https://blog.csdn.net/blog_jihq/article/details/52614156?utm_source=blogxgwz2&#34;&gt;这篇文章给出了很多示例错误信息&lt;/a&gt;第7条，将&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;s.user_target_xcconfig = { &amp;#39;CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES&amp;#39; =&amp;gt; &amp;#39;YES&amp;#39; }&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这条加入到podspec中解决了问题，原理是改变了本工程Xcode的编译设置。
+如果通过的话，会有相应的的提示&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;TNetwork passed validation.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;4-提交私有库的版本信息&#34;&gt;4.提交私有库的版本信息&lt;/h4&gt;
+
+&lt;p&gt;podspec文件中获取Git版本控制的项目还需要tag号，所以我们要打上一个tag，在工程目录下，终端执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ git tag -m &amp;#34;first release&amp;#34; &amp;#34;0.0.1&amp;#34;
+$ git push --tags     #推送tag到远端仓库&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;5-向spec-repo提交podspec&#34;&gt;5.向Spec Repo提交podspec&lt;/h4&gt;
+
+&lt;p&gt;接下来将刚才的0.0.1版本的podspec提交到私有仓库中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo push HQSpecs /Users/whqfor/TNetwork/TNetwork.podspec --allow-warnings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;如果选择忽略警告的话可以加上&amp;ndash;allow-warnings&lt;/p&gt;
+
+&lt;h4 id=&#34;6-更新维护podspec&#34;&gt;6.更新维护podspec&lt;/h4&gt;
+
+&lt;p&gt;之后如果需要发新的版本，和上诉流程基本一致，编辑好自己的库文件，打上tag提交到远端后，更新下podspec文件，执行第四步验证过之后，就可以继续按照第五步提交repo了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;~/.cocoapods/repos/HQSpecs 内的目录如下
+├── LICENSE
+├── TNetwork
+│   ├── 0.0.1
+│   │   └── TNetwork.podspec
+│   └── 0.0.2
+│       └── TNetwork.podspec
+└── README.md&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;删除本地私有库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo remove WTSpecs&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;还可以再添加回来&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;$ pod repo add HQSpecs https://github.com/CocoaPods/Specs.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;7-示例地址&#34;&gt;7.示例地址&lt;/h4&gt;
+
+&lt;p&gt;在尝试的过程中，版本号没变化的话，之前pod install可能有缓存。在&lt;code&gt;~/Library/Caches/CocoaPods/&lt;/code&gt;路径下找到缓存的库，直接删除即可。&lt;/p&gt;
+
+&lt;p&gt;HQSpecs仓库里放置的是podspec文件，有自己对应的git地址，podspec对应的仓库是另一个git地址，容易搞浑了。&lt;/p&gt;
+
+&lt;p&gt;以上即是只做了一个简单的私有库制作，后续会再完善下subspec制作，如果以后组件化的路上积攒更多的经验会持续更新。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/whqfor/HQSpecs&#34;&gt;本文HQSpec地址&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/whqfor/TNetwork&#34;&gt;本文podspec文件对应工程地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;参考文章&#34;&gt;参考文章&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cocoachina.com/ios/20150228/11206.html&#34;&gt;使用Cocoapods创建私有podspec&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://segmentfault.com/a/1190000012269307&#34;&gt;Cocoapods整理（三）——编写podspec文件&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.cnblogs.com/richard-youth/p/6272932.html&#34;&gt;podSpec文件相关知识整理&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+  </channel>
+</rss>
