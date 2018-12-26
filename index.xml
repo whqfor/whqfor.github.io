@@ -35,9 +35,9 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Cordova的优势在于，使用这套框架可以便捷的和原生Api进行交互。其框架如下图：
-&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-b579bc49af3f88b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/843&#34; alt=&#34;架构图&#34; /&gt;
-测试
-Cordova框架 主要由三部分组成：&lt;code&gt;WebView&lt;/code&gt; &lt;code&gt;Web App&lt;/code&gt; &lt;code&gt;Plugins&lt;/code&gt;。
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-b579bc49af3f88b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/843&#34; alt=&#34;架构图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cordova框架 主要由三部分组成：&lt;code&gt;WebView&lt;/code&gt; &lt;code&gt;Web App&lt;/code&gt; &lt;code&gt;Plugins&lt;/code&gt;。
 使用这套框架可以进行跨平台开发或者单端平台开发。
 &amp;gt;WebvView：提供开发的承载容器，可以作为组件使用，在iOS中采用UIWebView作为承载。
 &amp;gt;Web App：应用程序本身是作为web页面实现的，和常规web页面开发方式区别不大，有一个非常重要的文件config.xml，是配置一些配置plugin及关键配置的地方。
