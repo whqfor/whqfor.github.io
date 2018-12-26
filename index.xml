@@ -35,7 +35,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Cordova的优势在于，使用这套框架可以便捷的和原生Api进行交互。其框架如下图：
-&lt;img src=&#34;cordova.png&#34; alt=&#34;架构图&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/whqfor/whqfor.github.io/master/post/iOS/Hybrid案例学习/cordova.png&#34; alt=&#34;架构图&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Cordova框架 主要由三部分组成：&lt;code&gt;WebView&lt;/code&gt; &lt;code&gt;Web App&lt;/code&gt; &lt;code&gt;Plugins&lt;/code&gt;。
 使用这套框架可以进行跨平台开发或者单端平台开发。
