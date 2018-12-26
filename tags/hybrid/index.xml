@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on whqfor.github.io</title>
-    <link>https://whqfor.github.io/post/</link>
-    <description>Recent content in Posts on whqfor.github.io</description>
+    <title>Hybrid on whqfor.github.io</title>
+    <link>https://whqfor.github.io/tags/hybrid/</link>
+    <description>Recent content in Hybrid on whqfor.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>whqfor</copyright>
     <lastBuildDate>Thu, 20 Dec 2018 14:50:23 +0800</lastBuildDate>
     
-	<atom:link href="https://whqfor.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://whqfor.github.io/tags/hybrid/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -28,15 +28,6 @@
       
       <guid>https://whqfor.github.io/post/ios/hybrid%E6%96%B9%E6%A1%88%E5%88%9D%E6%8E%A2/</guid>
       <description>移动端的两大平台Android和iOS，基于自身平台的特性，开发相应的native应用能保证用户最好的体验效果。两个平台的开发技术和运行方式</description>
-    </item>
-    
-    <item>
-      <title>pod私有库搭建及podspec编辑简介</title>
-      <link>https://whqfor.github.io/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Thu, 01 Nov 2018 14:50:23 +0800</pubDate>
-      
-      <guid>https://whqfor.github.io/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/</guid>
-      <description>简述 Cocoapods是个非常好的iOS依赖管理工具，可以方便的进行管理和更新使用到的第三方库，以及在做代码模组件化管理的时候，可以用它来管</description>
     </item>
     
   </channel>
