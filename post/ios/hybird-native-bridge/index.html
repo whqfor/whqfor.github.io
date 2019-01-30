@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - whqfor.github.io</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="whqfor" />
+  <meta name="description" content="###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m" />
+
+  <meta name="keywords" content="Hugo, theme, jane, whqfor" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://whqfor.github.io/post/ios/hybird-native-bridge/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whqfor.github.io/post/ios/hybird-native-bridge/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m">
+
+
+
+<meta itemprop="wordCount" content="1812">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">whqfor</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      whqfor
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+      
+      <div class="post-meta">
+        <time datetime="0001-01-01" class="post-time">
+          0001-01-01
+        </time>
+        
+        <span class="more-meta"> 约 1812 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>###Hybird-Native bridge</p>
+
+<p>Hybird-JS侧的逻辑参考这里<a href="https://www.jianshu.com/p/0f46941d55ef">同事简书</a>，以后有时间自己再完善一下。</p>
+
+<p>iOS侧Native Bridge基于WKWebView开发，虽然messagehandler 可以直接处理JS发送过来的对象，但考虑到iOS、Android的数据统一性，这里还是在JS侧将要发送的消息转化为<code>JSON.stringify</code>，Native收到消息后，再解析即可。</p>
+
+<p>先上流程图：
+<img src="https://upload-images.jianshu.io/upload_images/273788-792040e8a2d2b98a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Hybird Native.png" /></p>
+
+<p>进行简要说明，主要分为两大部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">NativeBridge：处理JS消息接收与Native执行结果回调。
+Plugin：Native plugin，执行相应Native能力。</pre></td></tr></table>
+</div>
+</div>
+<p><code>dhjsbridge.js</code>是封装在Native侧的，并不直接提供给JS使用，在webView初始化时注入。<code>WKScriptMessageHandler</code>的代理方法在webView初始化时也代理给了<code>Native Bridge</code>统一处理，下面会介绍消息处理过程。</p>
+
+<p>JS给Native发消息之后在Native 侧收到的消息格式如下：<img src="https://upload-images.jianshu.io/upload_images/273788-dfbe18925a5778a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="msg数据格式.png" /></p>
+
+<p>收到消息后Bridge按照约定格式将消息进行处理，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">initWithDictionary:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">dict</span>
+<span class="p">{</span>
+    <span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="n">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span> <span class="o">&amp;&amp;</span> <span class="p">[</span><span class="n">dict</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="n">NSDictionary</span> <span class="k">class</span><span class="p">]])</span> <span class="p">{</span>
+        <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="n">dict</span><span class="p">[</span><span class="s">@&#34;data&#34;</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSArray</span> <span class="o">*</span><span class="n">plugin</span> <span class="o">=</span> <span class="p">[</span><span class="n">dict</span><span class="p">[</span><span class="s">@&#34;data&#34;</span><span class="p">][</span><span class="s">@&#34;plugin&#34;</span><span class="p">]</span> <span class="nl">componentsSeparatedByString</span><span class="p">:</span><span class="s">@&#34;.&#34;</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">plugin</span><span class="p">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">_handler</span> <span class="o">=</span> <span class="n">plugin</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="n">_action</span> <span class="o">=</span> <span class="n">plugin</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">_params</span> <span class="o">=</span> <span class="n">dict</span><span class="p">[</span><span class="s">@&#34;params&#34;</span><span class="p">];</span>
+        <span class="n">_callbackId</span> <span class="o">=</span> <span class="n">dict</span><span class="p">[</span><span class="s">@&#34;callbackId&#34;</span><span class="p">];</span>
+        <span class="n">_callbackFunction</span> <span class="o">=</span> <span class="s">@&#34;window.handleMessageFromNative&#34;</span><span class="p">;</span> <span class="c1">//dict[@&#34;callbackFunction&#34;];
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>根据<code>handler</code>和<code>action</code>在<code>self.handlerMap</code>找到对应的<code>plugin</code>，self.handlerMap是保存<code>plugin</code>能力的一个字典，plugin插件装载的时候会保存在这里。
+保存过程如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 注册Native能力
+</span><span class="c1"></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">registerHandler:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">handlerName</span> <span class="nf">action:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">actionName</span> <span class="nf">handler:</span><span class="p">(</span><span class="n">HandlerBlock</span><span class="p">)</span><span class="nv">handler</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">handlerName</span> <span class="o">&amp;&amp;</span> <span class="n">actionName</span> <span class="o">&amp;&amp;</span> <span class="n">handler</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">handlerDic</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">handlerMap</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">handlerName</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">handlerDic</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">handlerDic</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableDictionary</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="c1">// 注册时设置handlerMap 及保存 handler
+</span><span class="c1"></span>        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">handlerMap</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">handlerDic</span> <span class="nl">forKey</span><span class="p">:</span><span class="n">handlerName</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">handlerDic</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">handler</span> <span class="nl">forKey</span><span class="p">:</span><span class="n">actionName</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>可以看到根据模块名handlerName存储一个字典到handlerMap里，里面存放着模块下对应能力的回调函数HandlerBlock，以方法名做key。</p>
+
+<p>这样当JS消息处理完成之后：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="n">DWKJSBridgeMessage</span> <span class="o">*</span><span class="n">msg</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DWKJSBridgeMessage</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDictionary</span><span class="p">:</span><span class="n">msgBody</span><span class="p">];</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">handlerDic</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">handlerMap</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">msg</span><span class="p">.</span><span class="n">handler</span><span class="p">];</span>
+<span class="n">HandlerBlock</span> <span class="n">handler</span> <span class="o">=</span> <span class="p">[</span><span class="n">handlerDic</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">msg</span><span class="p">.</span><span class="n">action</span><span class="p">];</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这样就和刚才<code>plugin</code>注册的时候存储的<code>handler</code>一一对应了，如果查找不到的话，将消息准发给Native处理。</p>
+
+<p>找到plugin之后，先别着急将消息回调给plugin处理，在此之前还需判断JS是否需要回掉，JS发过来的消息中callbackId还没使用，这个id是回调Native处理结果给JS的凭证。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">callbackFunction</span> <span class="o">&amp;&amp;</span> <span class="n">msg</span><span class="p">.</span><span class="n">callbackId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 生成OC的回调block 异步执行
+</span><span class="c1"></span>    <span class="k">__weak</span> <span class="k">typeof</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+    <span class="n">JSResponseCallback</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">responseData</span><span class="p">){</span>
+         <span class="c1">// 执行OC 主动 Call JS 的编码与通信
+</span><span class="c1"></span>         <span class="p">[</span><span class="n">weakSelf</span> <span class="nl">injectMessageFuction</span><span class="p">:</span><span class="n">msg</span><span class="p">.</span><span class="n">callbackFunction</span> <span class="nl">callbackId</span><span class="p">:</span><span class="n">msg</span><span class="p">.</span><span class="n">callbackId</span> <span class="nl">withParams</span><span class="p">:</span><span class="n">responseData</span> <span class="nl">withCallback</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="p">[</span><span class="n">msg</span> <span class="nl">setCallback</span><span class="p">:</span><span class="n">callback</span><span class="p">];</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>生成回掉函数存储到msg中去，之后将msg作为参数回掉给plugin处理，这样plugin就有了相应的参数及回调函数了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">handler(msg);</pre></td></tr></table>
+</div>
+</div>
+<p>如果有回调即msg中存在callback回掉，则执行完成之后，将结果返回。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[msg callback:result];</pre></td></tr></table>
+</div>
+</div>
+<p>和上面解析JS发过来的消息一样，回掉消息也是在同一个消息处理中心进行转换，转换如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"> <span class="n">Native执行完能力之后调用此方法</span><span class="err">，回调数据给</span><span class="n">JS</span>
+ 
+ <span class="p">@</span><span class="n">param</span> <span class="n">result</span> <span class="err">用户回传的数据</span>
+ <span class="p">@</span><span class="n">param</span> <span class="n">status</span> <span class="err">是否调用成功</span>
+ <span class="p">@</span><span class="n">param</span> <span class="n">complete</span> <span class="err">默认为</span><span class="mi">1</span> <span class="err">不需要连续回调，</span><span class="mi">0</span><span class="err">代表需要连续回调，</span>
+ <span class="p">@</span><span class="n">param</span> <span class="n">errorMessage</span> <span class="err">如果失败，失败原因</span>
+ 
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="l">@{</span><span class="s">@&#34;status&#34;</span><span class="o">:</span><span class="l">@(</span><span class="n">status</span><span class="l">)</span><span class="p">,</span>
+                          <span class="s">@&#34;complete&#34;</span><span class="o">:</span><span class="l">@(</span><span class="n">complete</span><span class="l">)</span><span class="p">,</span>
+                          <span class="s">@&#34;errorMessage&#34;</span><span class="o">:</span><span class="n">errorMessage</span><span class="p">,</span>
+                          <span class="s">@&#34;data&#34;</span><span class="o">:</span><span class="n">result</span>
+                          <span class="l">}</span><span class="p">;</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span><span class="n">message</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>callback触发执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">JSResponseCallback callback = ^(id responseData) {
+     // 执行OC 主动 Call JS 的编码与通信
+     [weakSelf injectMessageFuction:msg.callbackFunction callbackId:msg.callbackId withParams:responseData withCallback:nil];
+};</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 主线程执行evaluateJavaScript:
+</span><span class="c1"></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">injectMessageFuction:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">action</span> <span class="nf">callbackId:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">callbackId</span> <span class="nf">withParams:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">message</span> <span class="nf">withCallback:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">_Nullable</span> <span class="kt">id</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">error</span><span class="p">))</span><span class="nv">handler</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="l">@{}</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="n">message</span> <span class="n">mutableCopy</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">response</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">callbackId</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&#34;callbackId&#34;</span><span class="p">];</span>
+    
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">paramsString</span> <span class="o">=</span> <span class="p">[</span><span class="n">DWKUtility</span> <span class="nl">serializeMessageData</span><span class="p">:</span><span class="n">response</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">paramsJSString</span> <span class="o">=</span> <span class="p">[</span><span class="n">DWKUtility</span> <span class="nl">transcodingJavascriptMessage</span><span class="p">:</span><span class="n">paramsString</span><span class="p">];</span>
+    <span class="n">NSString</span><span class="o">*</span> <span class="n">javascriptCommand</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&#34;%@(&#39;%@&#39;);&#34;</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">paramsJSString</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">([[</span><span class="n">NSThread</span> <span class="n">currentThread</span><span class="p">]</span> <span class="n">isMainThread</span><span class="p">])</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">webView</span> <span class="nl">evaluateJavaScript</span><span class="p">:</span><span class="n">javascriptCommand</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="n">handler</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">__strong</span> <span class="k">typeof</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="n">strongSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+        <span class="n">dispatch_sync</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
+            <span class="p">[</span><span class="n">strongSelf</span><span class="p">.</span><span class="n">webView</span> <span class="nl">evaluateJavaScript</span><span class="p">:</span><span class="n">javascriptCommand</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="n">handler</span><span class="p">];</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>由于语言特性，还需要对结果进行转码，这里不再详述这个过程可以<a href="http://awhisper.github.io/2018/03/06/hybrid-webcontainer/#.WwqaY1vZcZo.sinaweibo">看这里</a>
+至此，JS调用Native完成。</p>
+
+<p>还有一点需要说明的是，加载plugin过程，写了一个基类，里面只有一个方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">@interface</span> <span class="nc">DWKPlugin</span> : <span class="nc">NSObjec</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">registPlugin</span><span class="p">;</span>
+<span class="k">@end</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>需要开发plugin的话，继承这个基类即可，重写<code>registPlugin</code>，并且需要将plugin信息写到一个<code>DPluginRegisterFile.json</code>文件中，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">registPlugin</span>
+<span class="p">{</span>
+    <span class="p">[[</span><span class="n">DWKJSBridge</span> <span class="n">shareJSBridge</span><span class="p">]</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&#34;camera&#34;</span> <span class="nl">action</span><span class="p">:</span><span class="s">@&#34;getImage&#34;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">DWKJSBridgeMessage</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Native 执行任务
+</span><span class="c1"></span>        <span class="p">[</span><span class="n">msg</span> <span class="nl">callback</span><span class="p">:</span><span class="l">@{</span><span class="s">@&#34;imageData&#34;</span><span class="o">:</span><span class="n">result</span><span class="l">}</span> <span class="nl">status</span><span class="p">:</span><span class="mi">1</span> <span class="nl">complete</span><span class="p">:</span><span class="mi">1</span> <span class="nl">errorMessage</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">}];</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;DWKCameraPlugin&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;handler&#34;</span><span class="p">:</span> <span class="s2">&#34;camera&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;getImage&#34;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;DWKCommonPlugin&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;handler&#34;</span><span class="p">:</span> <span class="s2">&#34;common&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;commonAsyncParams&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;commonSyncParams&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;nativeLog&#34;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这样在初始化的时候Native birdge的时候，通过反射机制注册响应能力</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">registerHandler</span>
+<span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="nl">pathForResource</span><span class="p">:</span><span class="s">@&#34;DPluginRegisterFile&#34;</span> <span class="nl">ofType</span><span class="p">:</span><span class="s">@&#34;json&#34;</span><span class="p">];</span>
+    
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSData</span> <span class="nl">dataWithContentsOfFile</span><span class="p">:</span><span class="n">path</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+        <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">json</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nl">JSONObjectWithData</span><span class="p">:</span><span class="n">data</span>
+                                                             <span class="nl">options</span><span class="p">:</span><span class="n">NSJSONReadingAllowFragments</span>
+                                                               <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+        <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">handlerMap</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">new</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">handlerMap</span> <span class="nl">addEntriesFromDictionary</span><span class="p">:</span><span class="n">json</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;error %@ &#34;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">plugin</span> <span class="k">in</span> <span class="n">handlerMap</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSClassFromString</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span> <span class="n">new</span><span class="p">];</span>
+            <span class="kt">SEL</span> <span class="n">selector</span> <span class="o">=</span> <span class="n">NSSelectorFromString</span><span class="p">(</span><span class="s">@&#34;registPlugin&#34;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">([</span><span class="n">obj</span> <span class="nl">respondsToSelector</span><span class="p">:</span><span class="n">selector</span><span class="p">])</span> <span class="p">{</span>
+                <span class="p">[</span><span class="n">obj</span> <span class="nl">performSelector</span><span class="p">:</span><span class="n">selector</span> <span class="nl">withObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">afterDelay</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">whqfor</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">pod私有库搭建及podspec编辑简介</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'Hybird-Native bridge.md',
+        title: '',
+        link: decodeURI(location.href),
+        desc: '###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m',
+        owner: 'whqfor',
+        repo: 'comments',
+        oauth: {
+          client_id: '4a3773392d07c2f0545b',
+          client_secret: 'a2f7f2f299848434ae40a7c20d7f22f0d554c621'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:whqfor@126.com" rel="me noopener" class="iconfont icon-email"
+        title="email">
+      </a>
+      <a href="https://github.com/whqfor" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+  <a href="https://whqfor.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2018 -
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        whqfor
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

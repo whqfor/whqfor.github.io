@@ -39,5 +39,14 @@
       <description>简述 Cocoapods是个非常好的iOS依赖管理工具，可以方便的进行管理和更新使用到的第三方库，以及在做代码模组件化管理的时候，可以用它来管</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://whqfor.github.io/post/ios/hybird-native-bridge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://whqfor.github.io/post/ios/hybird-native-bridge/</guid>
+      <description>###Hybird-Native bridge Hybird-JS侧的逻辑参考这里同事简书，以后有时间自己再完善一下。 iOS侧Native Bridge基于WKWebView开发，虽然m</description>
+    </item>
+    
   </channel>
 </rss>
