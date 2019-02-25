@@ -7,10 +7,153 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>whqfor</copyright>
-    <lastBuildDate>Tue, 29 Jan 2019 14:50:23 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Feb 2019 14:50:23 +0800</lastBuildDate>
     
         <atom:link href="https://whqfor.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>钉钉E应用调研</title>
+      <link>https://whqfor.github.io/post/web/%E9%92%89%E9%92%89e%E5%BA%94%E7%94%A8%E8%B0%83%E7%A0%94/</link>
+      <pubDate>Mon, 25 Feb 2019 14:50:23 +0800</pubDate>
+      
+      <guid>https://whqfor.github.io/post/web/%E9%92%89%E9%92%89e%E5%BA%94%E7%94%A8%E8%B0%83%E7%A0%94/</guid>
+      
+        <description>
+
+&lt;h5 id=&#34;简速&#34;&gt;简速&lt;/h5&gt;
+
+&lt;p&gt;在钉钉内运行的&amp;rdquo;小程序&amp;rdquo;叫做E应用，&lt;a href=&#34;https://open-doc.dingtalk.com/microapp?spm=a2115p.8777639.4570797.11.22baa7dblUfzqH&#34;&gt;钉钉小程序概览入口&lt;/a&gt;，又分为三种类型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;企业内部开发：企业或组织内部使用，该类应用无需钉钉团队审核，企业内部自行开发并使用即可。
+
+第三方企业应用：基于钉钉的开放能力开发应用，并上架至钉钉应用市场，供钉钉上的企业/组织使用，需要钉钉团队审核。
+
+第三方个人应用：基于钉钉的开放能力开发应用，提供给钉钉个人用户使用。此种类型应用不感知企业信息。应用可以通过群转发、应用市场、群应用使用历史、个人应用使用历史等钉钉客户端入口传播和分发，需要钉钉团队审核。&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;第三方个人应用示例：
+&lt;img src=&#34;https://cdn-pub.yuque.com/lark/0/2018/png/18251/1530586998522-f0e59135-db9b-4633-996a-e11ea69a7cde.png&#34; alt=&#34;第三方个人应用示例&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大致浏览了一下开发者文档，并试用了一下IDE，下面简单介绍下体验。&lt;/p&gt;
+
+&lt;h5 id=&#34;文档解读&#34;&gt;文档解读&lt;/h5&gt;
+
+&lt;p&gt;E应用开发和微信小程序很相似，也是分为 &lt;code&gt;app&lt;/code&gt; 和 &lt;code&gt;page&lt;/code&gt; 两层。&lt;code&gt;app&lt;/code&gt; 用来描述整体程序，&lt;code&gt;page&lt;/code&gt; 用来描述各个页面。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;app&lt;/code&gt; 由三个文件组成，必须放在项目的根目录。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;app.js&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;E应用逻辑&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;app.json&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;E应用公共设置&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;app.acss&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;E应用公共样式表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;page&lt;/code&gt; 由四个文件组成，分别是：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件类型&lt;/th&gt;
+&lt;th&gt;必填&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;js&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;页面逻辑&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;axml&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;td&gt;页面结构&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;acss&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;页面样式表&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;json&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;td&gt;页面配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;acss&lt;/code&gt; &lt;code&gt;axml&lt;/code&gt; 中的a的是ant蚂蚁的首字母，和支付宝小程序通用，语法和前端开发使用类似，上手容易。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://open-doc.dingtalk.com/microapp/dev/framework-app&#34;&gt;&lt;code&gt;API&lt;/code&gt;可以看这里&lt;/a&gt;
+组件还算齐全，满足绝大多数UI功能开发。不过目前&lt;code&gt;多媒体能力欠缺&lt;/code&gt;，开发音视频体验受限，不能像微信小程序一样提供丰富的多媒体API供开发者调用，微信小程序的多媒体能力是直接使用Native能力供小程序开发者调用。&lt;/p&gt;
+
+&lt;h5 id=&#34;ide&#34;&gt;IDE&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://open-doc.dingtalk.com/microapp/kn6zg7/zunrdk&#34;&gt;IDE下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;打开ide之后新建应用看到如下界面：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-101e22d655899c9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;创建应用.png&#34; /&gt;
+同一个IDE可以开发&lt;code&gt;支付宝小程序&lt;/code&gt;，&lt;code&gt;钉钉E应用&lt;/code&gt;，还有基于&lt;code&gt;mPaaS框架的应用&lt;/code&gt;。因为都采用&lt;code&gt;acss&lt;/code&gt; &lt;code&gt;axml&lt;/code&gt; &lt;code&gt;js&lt;/code&gt; &lt;code&gt;json&lt;/code&gt;，差异只是平台不同，大部分功能可以复用。&lt;/p&gt;
+
+&lt;p&gt;目前支付宝小程序不接受个人开发者试用，只有企业可以申请。&lt;/p&gt;
+
+&lt;p&gt;移动开发平台（Mobile PaaS，简称 mPaaS）是源于支付宝 App 的移动开发平台，为移动开发、测试、运营及运维提供云到端的一站式解决方案，&lt;a href=&#34;https://tech.antfin.com/docs/2/49549&#34;&gt;文档&lt;/a&gt;支持热更新及跨平台。&lt;/p&gt;
+
+&lt;p&gt;ide内置demo功能，可以先查看组件示例，简单体验一下里面的组件。&lt;/p&gt;
+
+&lt;p&gt;工程打开后的界面如下图：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-d4258e02b814cbe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;ide预览.png&#34; /&gt; 和微信小程序很相似，并且把模拟器和代码编辑区分开，更方便调试。&lt;/p&gt;
+
+&lt;p&gt;真机预览会生成一个二维码，需要使用钉钉扫描查看。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-5cd919ec302e45d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;上传.png&#34; /&gt;
+上传操作很简单，点击上传即可，上传之后可以在钉钉后台看到，这时候并不是提交审核。
+这个地方有个小坑，&lt;code&gt;点击这里&lt;/code&gt;按钮跳转到的页面支付宝小程序管理后台。因此需要用户自己搜索进入钉钉开放平台，界面如下图
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-d429d2bc5b5f649f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;管理.png&#34; /&gt;
+审核通过之后可以灰度发布，也可以版本回退。
+灰度测试后，开发者点击发布，钉钉用户即可使用该版本的应用，用户可通过&lt;code&gt;扫码或分享&lt;/code&gt;进入应用。
+E应用的入口在钉钉里隐藏的比较深，钉钉-&amp;gt;我的-&amp;gt;最下侧E应用，可能是还没有大规模推广的原因。
+目前可以看到的个人开发的E应用比较少，面向企业和组织内部的也不是太多。如果进行开发的话，可以先小范围试用。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Hybrid-Native Birdge</title>

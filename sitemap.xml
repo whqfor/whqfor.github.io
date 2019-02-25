@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://whqfor.github.io/post/web/%E9%92%89%E9%92%89e%E5%BA%94%E7%94%A8%E8%B0%83%E7%A0%94/</loc>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/post/ios/hybird-native-bridge/</loc>
     <lastmod>2019-01-29T14:50:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -66,7 +73,7 @@
   
   <url>
     <loc>https://whqfor.github.io/post/</loc>
-    <lastmod>2019-01-29T14:50:23+08:00</lastmod>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -86,8 +93,29 @@
   </url>
   
   <url>
+    <loc>https://whqfor.github.io/categories/web/</loc>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/</loc>
-    <lastmod>2019-01-29T14:50:23+08:00</lastmod>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://whqfor.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://whqfor.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
+    <lastmod>2019-02-25T14:50:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
