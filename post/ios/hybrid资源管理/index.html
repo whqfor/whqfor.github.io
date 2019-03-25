@@ -69,7 +69,7 @@
 
 <meta itemprop="datePublished" content="2019-03-24T17:57:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-24T17:57:23&#43;08:00" />
-<meta itemprop="wordCount" content="1787">
+<meta itemprop="wordCount" content="1786">
 
 
 
@@ -279,7 +279,7 @@
             <a href="https://whqfor.github.io/categories/ios/"> iOS </a>
             
           </div>
-        <span class="more-meta"> 约 1787 字 </span>
+        <span class="more-meta"> 约 1786 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
@@ -365,16 +365,16 @@
         <span class="nt">&#34;h5_modul_id&#34;</span><span class="p">:</span> <span class="s2">&#34;12345765432&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_name&#34;</span><span class="p">:</span> <span class="s2">&#34;serviceName&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.dahai.com/client/html.zip&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;dahai://hybrid/moduleA&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.XXX.com/client/html.zip&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;Test://hybrid/moduleA&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_index&#34;</span><span class="p">:</span> <span class="s2">&#34;/modules/test/test.html&#34;</span>
     <span class="p">},</span>
     <span class="nt">&#34;moduleB&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;h5_modul_id&#34;</span><span class="p">:</span> <span class="s2">&#34;12345760001&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_name&#34;</span><span class="p">:</span> <span class="s2">&#34;serviceName&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.dahai.com/client/html.zip&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;dahai://hybrid/moduleB&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.XXX.com/client/html.zip&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;Test://hybrid/moduleB&#34;</span><span class="p">,</span>
         <span class="nt">&#34;h5_resource_index&#34;</span><span class="p">:</span> <span class="s2">&#34;/modules/test/test.html&#34;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></td></tr></table>
@@ -456,8 +456,8 @@
         &#34;h5_modul_id&#34;: &#34;12345765432&#34;,
         &#34;h5_resource_name&#34;: &#34;serviceName&#34;,
         &#34;h5_resource_version&#34;: &#34;1.1&#34;,
-        &#34;h5_resource_download_url&#34;: &#34;http://cdn.dahai.com/client/html.zip&#34;,
-        &#34;h5_resource_route_uri&#34;: &#34;dahai://hybrid/moduleA&#34;,
+        &#34;h5_resource_download_url&#34;: &#34;http://cdn.XXX.com/client/html.zip&#34;,
+        &#34;h5_resource_route_uri&#34;: &#34;Test://hybrid/moduleA&#34;,
         &#34;h5_resource_index&#34;: &#34;/modules/test/test.html&#34;
     }</pre></td></tr></table>
 </div>
@@ -492,7 +492,7 @@ h5_resource_index：资源中的入口地址</pre></td></tr></table>
 <td class="lntd">
 <pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 查找
 </span><span class="c1"></span><span class="k">__weak</span> <span class="nf">typeof</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
-    <span class="p">[[</span><span class="n">DHSourseMap</span> <span class="n">shareSourseMap</span><span class="p">]</span> <span class="nl">fileWithRoute</span><span class="p">:</span><span class="s">@&#34;dahai://hybrid/moduleA&#34;</span> <span class="nl">callBack</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">fileUrl</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[[</span><span class="n">DHSourseMap</span> <span class="n">shareSourseMap</span><span class="p">]</span> <span class="nl">fileWithRoute</span><span class="p">:</span><span class="s">@&#34;Test://hybrid/moduleA&#34;</span> <span class="nl">callBack</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">fileUrl</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;hybrid文件 FileUrl %@ if error %@&#34;</span><span class="p">,</span> <span class="n">fileUrl</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="p">[</span><span class="n">weakSelf</span><span class="p">.</span><span class="n">webView</span> <span class="nl">loadFileURL</span><span class="p">:</span><span class="n">fileUrl</span> <span class="nl">allowingReadAccessToURL</span><span class="p">:</span><span class="n">fileUrl</span><span class="p">];</span>
@@ -500,7 +500,7 @@ h5_resource_index：资源中的入口地址</pre></td></tr></table>
     <span class="p">}];</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>根据<code>dahai://hybrid/moduleA</code>中的moduleA，在配置文件中找到相应的moduleA，这样在文件管理中拼接处文件路径，
+<p>根据<code>Test://hybrid/moduleA</code>中的moduleA，在配置文件中找到相应的moduleA，这样在文件管理中拼接处文件路径，
 <code>hybrid/moduleA/1.1/modules/test/test.html</code></p>
 
 <p>文件管理查找到有这么文件，则回调给APP，APP加载<code>fileUrl</code>
