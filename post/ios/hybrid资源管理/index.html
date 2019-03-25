@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - whqfor.github.io</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="whqfor" />
+  <meta name="description" content="hybrid资源管理 title: &amp;ldquo;Hybrid案例学习&amp;rdquo; date: 2019-03-25T17:57:23&#43;08:00 lastmod: 2019-03-25T17:57:23:01&#43;08:00 draft: false tags: [&amp;ldquo;Hybrid&amp;rdquo;] categories: [&amp;ldquo;iOS&amp;rdquo;] 为了提高webView加载速度，将需要加载的资源文" />
+
+  <meta name="keywords" content="Hugo, theme, jane, whqfor" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://whqfor.github.io/post/ios/hybrid%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="hybrid资源管理 title: &ldquo;Hybrid案例学习&rdquo; date: 2019-03-25T17:57:23&#43;08:00 lastmod: 2019-03-25T17:57:23:01&#43;08:00 draft: false tags: [&ldquo;Hybrid&rdquo;] categories: [&ldquo;iOS&rdquo;] 为了提高webView加载速度，将需要加载的资源文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whqfor.github.io/post/ios/hybrid%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="hybrid资源管理 title: &ldquo;Hybrid案例学习&rdquo; date: 2019-03-25T17:57:23&#43;08:00 lastmod: 2019-03-25T17:57:23:01&#43;08:00 draft: false tags: [&ldquo;Hybrid&rdquo;] categories: [&ldquo;iOS&rdquo;] 为了提高webView加载速度，将需要加载的资源文">
+
+
+
+<meta itemprop="wordCount" content="1832">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="hybrid资源管理 title: &ldquo;Hybrid案例学习&rdquo; date: 2019-03-25T17:57:23&#43;08:00 lastmod: 2019-03-25T17:57:23:01&#43;08:00 draft: false tags: [&ldquo;Hybrid&rdquo;] categories: [&ldquo;iOS&rdquo;] 为了提高webView加载速度，将需要加载的资源文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">whqfor</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      whqfor
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+      
+      <div class="post-meta">
+        <time datetime="0001-01-01" class="post-time">
+          0001-01-01
+        </time>
+        
+        <span class="more-meta"> 约 1832 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#hybrid资源管理">hybrid资源管理</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#categories-ios">categories: [&ldquo;iOS&rdquo;]</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#匹配">匹配</a></li>
+<li><a href="#查找">查找</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h4 id="hybrid资源管理">hybrid资源管理</h4>
+
+<hr />
+
+<p>title: &ldquo;Hybrid案例学习&rdquo;
+date: 2019-03-25T17:57:23+08:00
+lastmod: 2019-03-25T17:57:23:01+08:00
+draft: false
+tags: [&ldquo;Hybrid&rdquo;]</p>
+
+<h2 id="categories-ios">categories: [&ldquo;iOS&rdquo;]</h2>
+
+<p>为了提高webView加载速度，将需要加载的资源文件提前下载的APP，下面将对资源下载流程进行介绍。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/273788-d043553adabdda3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hybird资源管理.png" /></p>
+
+<p>资源管理主要分为三个部分，如上图：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">下载：黄色部分，主要负责文件的下载操作。
+匹配：橙色部分，每次拉取完成配置文件后进行匹配。
+文件管理：绿色部分。</pre></td></tr></table>
+</div>
+</div>
+<p>配置文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;moduleA&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;h5_modul_id&#34;</span><span class="p">:</span> <span class="s2">&#34;12345765432&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_name&#34;</span><span class="p">:</span> <span class="s2">&#34;serviceName&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.dahai.com/client/html.zip&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;dahai://hybrid/moduleA&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_index&#34;</span><span class="p">:</span> <span class="s2">&#34;/modules/test/test.html&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;moduleB&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;h5_modul_id&#34;</span><span class="p">:</span> <span class="s2">&#34;12345760001&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_name&#34;</span><span class="p">:</span> <span class="s2">&#34;serviceName&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_download_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://cdn.dahai.com/client/html.zip&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_route_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;dahai://hybrid/moduleB&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;h5_resource_index&#34;</span><span class="p">:</span> <span class="s2">&#34;/modules/test/test.html&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>每一个module是一个具体功能，对应一个zip压缩包，比如moduleA、moduleB，和<code>h5_resource_route_uri</code>字段下的module对应。每次下发的配置文件时全量的hybrid功能，不过不用担心，下载的时候只会下载和上次有变更的内容，这即是橙色部分的功能。会将上次拉取的配置文件和本次拉取的配置文件做比较，并生成一份和存储相对应的目录，下面会详细介绍。</p>
+
+<p>和APP交互的地方有两个：
+一是：APP启动的时候，指定配置文件下载地址，资源管理会按照配置文件进行更新。
+另一个是：APP在需要使用hybrid资源的时候，根据路由查找，及<code>h5_resource_route_uri</code>中定义的字段，先查找下发的配置文件，如果有相应的module，再去文件系统里查找是否有下载好的文件，则下载，下载完成解压后，<code>callback</code>查找到<code>fileUrl</code>给APP。</p>
+
+<p>这里贴一下存储在APP中的目录结构：
+<img src="https://upload-images.jianshu.io/upload_images/273788-6b7f818862cf730a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="存储目录.png" /></p>
+
+<p>文件存储在Documents下创建的hybrid中，hybrid里面存放着各个module，与之并列的是两个字典文件，<code>preJsonValue</code>里面是最新拉取的json配置里的数据。<code>preMergeValue</code>里存储着新旧两次合并之后的信息。使用<code>NSDictionary</code>自带存储方式即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 储存
+</span><span class="c1"></span><span class="p">[</span><span class="n">jsonValue</span> <span class="nl">writeToFile</span><span class="p">:</span><span class="n">preJsonValueFilePath</span> <span class="nl">atomically</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+
+<span class="c1">// 读取
+</span><span class="c1"></span><span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithContentsOfFile</span><span class="p">:</span><span class="n">preJsonValueFilePath</span><span class="p">];</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>每个module下面最多保两个版本，如上图中<code>moduleB</code>下面有着两个版本，1.0、1.1，当再有个1.2版本时，会把module下面最小的一个版本1.0删除。假如只保留一个版本的时候，如果程序启动下载资源比较慢，这时APP已经加载了之前之前版本的web页面，按照一个文件的逻辑，下载完新的资源需要把老的资源删除，这样就对正在显示的页面有了影响。保留两个文件能够解决这个问题<code>这一块可能不是最优解，欢迎一起探讨</code>。也不用担心会加载老版本的问题，路由查找的时候会对配置里的版本号进行比对，保证加载的都是配置文件中指定的版本。</p>
+
+<p>关于下载和文件管理比较简单，不做过多介绍。主要介绍一下匹配策略。</p>
+
+<h5 id="匹配">匹配</h5>
+
+<p>匹配策略是资源管理的中枢，如流程图上所示，当下载模块将配置文件拉取之后，转交给匹配<code>Map</code>中，在<code>Map</code>中做新旧配置文件的对比。</p>
+
+<p>步骤如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">0.获取到最新配置文件，储存一份到APP，并保存一份全局变量供查找使用。
+1.对比新老配置文件，找到不在新配置文件中的modul，整个module删除。
+2.遍历新配置文件，查找是否存在旧配置文件中，
+··如果已经存在则不需要更新。
+··如果不存在module的新版本
+····将module的新版本加入到下载队列。
+······如果已经存储的module下只有一个版本，符合最多保存两个版本的规则，不做处理。
+······如果已经存在两个版本，则对两个版本做比较，删除最小的版本。
+3.更新合并之后的配置信息，存储到APP中。</pre></td></tr></table>
+</div>
+</div>
+<h5 id="查找">查找</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&#34;moduleA&#34;: {
+        &#34;h5_modul_id&#34;: &#34;12345765432&#34;,
+        &#34;h5_resource_name&#34;: &#34;serviceName&#34;,
+        &#34;h5_resource_version&#34;: &#34;1.1&#34;,
+        &#34;h5_resource_download_url&#34;: &#34;http://cdn.dahai.com/client/html.zip&#34;,
+        &#34;h5_resource_route_uri&#34;: &#34;dahai://hybrid/moduleA&#34;,
+        &#34;h5_resource_index&#34;: &#34;/modules/test/test.html&#34;
+    }</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">h5_modul_id：资源文件唯一id，可以用作埋点
+h5_resource_name：功能名称
+h5_resource_version：版本号
+h5_resource_download_url：资源下载地址
+h5_resource_route_uri：用作路由
+h5_resource_index：资源中的入口地址</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 查找
+</span><span class="c1"></span><span class="k">__weak</span> <span class="nf">typeof</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+    <span class="p">[[</span><span class="n">DHSourseMap</span> <span class="n">shareSourseMap</span><span class="p">]</span> <span class="nl">fileWithRoute</span><span class="p">:</span><span class="s">@&#34;dahai://hybrid/moduleA&#34;</span> <span class="nl">callBack</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">fileUrl</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;hybrid文件 FileUrl %@ if error %@&#34;</span><span class="p">,</span> <span class="n">fileUrl</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">weakSelf</span><span class="p">.</span><span class="n">webView</span> <span class="nl">loadFileURL</span><span class="p">:</span><span class="n">fileUrl</span> <span class="nl">allowingReadAccessToURL</span><span class="p">:</span><span class="n">fileUrl</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}];</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>根据<code>dahai://hybrid/moduleA</code>中的moduleA，在配置文件中找到相应的moduleA，这样在文件管理中拼接处文件路径，
+<code>hybrid/moduleA/1.1/modules/test/test.html</code></p>
+
+<p>文件管理查找到有这么文件，则回调给APP，APP加载<code>fileUrl</code>
+如果没找到，则通过KVC告知下载模块系在，下载完成并解压后，再回调给APP，APP加载<code>fileUrl</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[weakSelf.webView loadFileURL:fileUrl allowingReadAccessToURL:fileUrl];</pre></td></tr></table>
+</div>
+</div>
+<p>如果有更好的思路或者错误欢迎指正、交流。</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">whqfor</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">0001-01-01</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/tools/pod%E7%A7%81%E6%9C%89%E5%BA%93%E6%90%AD%E5%BB%BA%E7%AE%80%E4%BB%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">pod私有库搭建及podspec编辑简介</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'Hybrid资源管理.md',
+        title: '',
+        link: decodeURI(location.href),
+        desc: 'hybrid资源管理 title: \x26ldquo;Hybrid案例学习\x26rdquo; date: 2019-03-25T17:57:23\x2b08:00 lastmod: 2019-03-25T17:57:23:01\x2b08:00 draft: false tags: [\x26ldquo;Hybrid\x26rdquo;] categories: [\x26ldquo;iOS\x26rdquo;] 为了提高webView加载速度，将需要加载的资源文',
+        owner: 'whqfor',
+        repo: 'comments',
+        oauth: {
+          client_id: '4a3773392d07c2f0545b',
+          client_secret: 'a2f7f2f299848434ae40a7c20d7f22f0d554c621'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:whqfor@126.com" rel="me noopener" class="iconfont icon-email"
+        title="email">
+      </a>
+      <a href="https://github.com/whqfor" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+  <a href="https://whqfor.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2018 -
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        whqfor
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
