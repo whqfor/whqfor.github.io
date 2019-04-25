@@ -7,10 +7,268 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>whqfor</copyright>
-    <lastBuildDate>Sun, 24 Mar 2019 17:57:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 15:05:23 +0800</lastBuildDate>
     
         <atom:link href="https://whqfor.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git 不同的邮箱配置不同的ssh</title>
+      <link>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</link>
+      <pubDate>Thu, 25 Apr 2019 15:05:23 +0800</pubDate>
+      
+      <guid>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</guid>
+      
+        <description>&lt;nav&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#背景&#34;&gt;背景：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置ssh-keys&#34;&gt;配置ssh keys&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置config&#34;&gt;配置config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#验证&#34;&gt;验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#参考&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h6 id=&#34;背景&#34;&gt;背景：&lt;/h6&gt;
+
+&lt;p&gt;1.提交代码到公司gerrit，需要使用公司邮箱aaa.@company.com 生成的SSH。
+2.提交代码到github，想使用个人邮箱bbb.@126.com 生成的SSH。&lt;/p&gt;
+
+&lt;p&gt;环境：Mac系统&lt;/p&gt;
+
+&lt;h6 id=&#34;配置ssh-keys&#34;&gt;配置ssh keys&lt;/h6&gt;
+
+&lt;p&gt;如果之前已经配置过其中一个，现在只需新配置另一个即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;ssh-keygen -t rsa -f ~/.ssh/id_rsa[.别名] -C “邮箱地址“
+
+示例：
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.github -C “bbb@126.com“&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;如果都没配置过，再创建执行另一个，别名和邮箱：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;ssh-keygen -t rsa -f ~/.ssh/id_rsa.gerrit -C “aaa@company.com“&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这样如果进入 .ssh 目录会看到有两套配置文件&lt;code&gt;id_rsa.github&lt;/code&gt;、&lt;code&gt;id_rsa.github.pub&lt;/code&gt;，&lt;code&gt;id_rsa.gerrit&lt;/code&gt;、&lt;code&gt;id_rsa.gerrit.pub&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h6 id=&#34;配置config&#34;&gt;配置config&lt;/h6&gt;
+
+&lt;p&gt;配置完ssh keys之后需要绑定一下对应关系，这个操作是在~/.ssh/config 目录下进行的。
+如果是第一次配置本地应该没有这个文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;cd .ssh
+touch config&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;之后进行编辑即可，可以直接操作文本或者&lt;code&gt;vim config&lt;/code&gt;进行编辑。
+示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;	# gerrit
+	Host gerrit.company.com
+	HostName gerrit.company.com
+	Port 25638
+	User aaa
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/id_rsa.gerrit
+	
+	
+	# GitHub
+	Host github.com
+	HostName github.com
+	User bbb
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/id_rsa&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;一般ssh config 只配置上面简单的几项即可。
+如果想详细了解还有哪些参数参考&lt;a href=&#34;http://man.openbsd.org/ssh_config.5&#34;&gt;详细config参数&lt;/a&gt; ，
+更多功能比如&lt;a href=&#34;https://segmentfault.com/q/1010000000631942&#34;&gt;ssh 在客户端如何强制使用密码验证方式登陆？&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;之后将配置好的SSH key 添加到github 及公司的gerrit 即可。&lt;/p&gt;
+
+&lt;p&gt;在这个过程中你可能会使用到这些命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;显示/隐藏Mac隐藏文件命令如下(注意其中的空格并且区分大小写)：
+显示Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles -bool true
+隐藏Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles -bool false
+
+终端查看ssk pub 
+cat ~/.ssh/id_rsa.pub
+将ssh key拷贝到剪切板： 
+pbcopy &amp;lt; ~/.ssh/id_rsa.pub&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h6 id=&#34;验证&#34;&gt;验证&lt;/h6&gt;
+
+&lt;p&gt;最后验证一下是否配置好了:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;验证github  
+ssh -T git@github.com
+
+localhost:.ssh whqfor$ ssh -T git@github.com
+Enter passphrase for key &amp;#39;/Users/aaa/.ssh/id_rsa.github&amp;#39;: 
+Hi aaa! You&amp;#39;ve successfully authenticated, but GitHub does not provide shell access.
+这就说明验证通过了&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;验证github  
+ssh -T gerrit.compant.com
+
+localhost:.ssh whqfor$ ssh -T gerrit.bbb.com
+Enter passphrase for key &amp;#39;/Users/whqfor/.ssh/id_rsa.gerrit&amp;#39;: 
+
+  ****    Welcome to Gerrit Code Review    ****
+
+  Hi bbb, you have successfully connected over SSH.
+
+  Unfortunately, interactive shells are disabled.
+  To clone a hosted Git repository, use:
+
+  git clone ssh://bbb.company.com:25638/REPOSITORY_NAME.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;可以看下两个 验证方式有点小差别：&lt;code&gt;ssh -T git@github.com&lt;/code&gt; 和 &lt;code&gt;ssh -T gerrit.compant.com&lt;/code&gt;，具体形式没有找到说明，如果你知道，还请指导我，谢谢。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/40650926/git-push-error-does-not-match-your-user-account&#34;&gt;可能还会遇到问题&lt;/a&gt;
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-cac008f23cd35d98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;多SSH.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我第一次配置多SSH的时候的确遇到这个问题，
+解决方式好像是需要再配置一下邮箱，记不太清了，这个场景再次尝试没有复现，有遇到的话欢迎找我交流。&lt;/p&gt;
+
+&lt;p&gt;而配置邮箱你可能会需要&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;配置用户名
+git config --global user.name &amp;#34;XXX&amp;#34; 
+
+配置邮箱
+git config --global user.email &amp;#34;XXX@XX.com&amp;#34;
+
+取消用户名
+git config --unset --global user.name
+
+List all variables set in config file, along with their values.
+git config --list&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;更多config配置参考&lt;a href=&#34;https://git-scm.com/docs/git-config/&#34;&gt;git-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;参考&#34;&gt;参考&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config&#34;&gt;Multiple GitHub Accounts &amp;amp; SSH Config&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/tangranyang/p/5229300.html&#34;&gt;git 用不同的邮箱配置不同的ssh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/hao495430759/article/details/80673568&#34;&gt;Git配置多个SSH key&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/maoxinwen1/article/details/80269299&#34;&gt;Mac OS 配置多个ssh-key&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000008739604&#34;&gt;git push 问题：committer &amp;lsquo;xxx (x)&amp;rsquo; does not match your user account&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Hybrid资源管理</title>

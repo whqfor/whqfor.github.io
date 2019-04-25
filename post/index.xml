@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>whqfor</copyright>
-    <lastBuildDate>Sun, 24 Mar 2019 17:57:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 15:05:23 +0800</lastBuildDate>
     
 	<atom:link href="https://whqfor.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git 不同的邮箱配置不同的ssh</title>
+      <link>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</link>
+      <pubDate>Thu, 25 Apr 2019 15:05:23 +0800</pubDate>
+      
+      <guid>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</guid>
+      <description>背景： 配置ssh keys 配置config 验证 参考 背景： 1.提交代码到公司gerrit，需要使用公司邮箱aaa.@company.com 生成的SSH</description>
+    </item>
     
     <item>
       <title>Hybrid资源管理</title>

@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</loc>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/post/ios/hybrid%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2019-03-24T17:57:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -58,6 +65,13 @@
   </url>
   
   <url>
+    <loc>https://whqfor.github.io/tags/git/</loc>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/tags/hybrid/</loc>
     <lastmod>2019-03-24T17:57:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -80,7 +94,14 @@
   
   <url>
     <loc>https://whqfor.github.io/post/</loc>
-    <lastmod>2019-03-24T17:57:23+08:00</lastmod>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://whqfor.github.io/tags/ssh/</loc>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,14 +115,14 @@
   
   <url>
     <loc>https://whqfor.github.io/categories/tools/</loc>
-    <lastmod>2018-11-01T14:50:23+08:00</lastmod>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://whqfor.github.io/</loc>
-    <lastmod>2019-03-24T17:57:23+08:00</lastmod>
+    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
