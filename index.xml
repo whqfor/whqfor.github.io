@@ -62,33 +62,39 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;moduleA&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;test_a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_zip_md5&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;a514cdaf63a78cc454d07904493c3178&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_modul_id&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;12345765432&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;serviceName&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;测试页面A&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_download_url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://cdn.XXX.com/client/html.zip&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_route_uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Test://hybrid/moduleA&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_index&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/modules/test/test.html&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_download_url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://packages.tdahai.com/hybrid/10086/15/10086_1.0.zip&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_route_uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dahai://hybrid/test_a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;moduleB&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;test_b&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_zip_md5&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;a514cdaf63a78cc454d07904493c3178&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_modul_id&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;12345760001&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;serviceName&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_download_url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://cdn.XXX.com/client/html.zip&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_route_uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Test://hybrid/moduleB&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_index&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/modules/test/test.html&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;活动页面B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_download_url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://packages.tdahai.com/hybrid/10086/15/10086_1.0.zip&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;h5_resource_route_uri&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dahai://hybrid/test_b&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;类图如下：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-3708ca0197c835e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;资源管理类图.png&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;每一个module是一个具体功能，对应一个zip压缩包，比如moduleA、moduleB，和&lt;code&gt;h5_resource_route_uri&lt;/code&gt;字段下的module对应。每次下发的配置文件时全量的hybrid功能，不过不用担心，下载的时候只会下载和上次有变更的内容，这即是橙色部分的功能。会将上次拉取的配置文件和本次拉取的配置文件做比较，并生成一份和存储相对应的目录，下面会详细介绍。&lt;/p&gt;
 
 &lt;p&gt;和APP交互的地方有两个：
 一是：APP启动的时候，指定配置文件下载地址，资源管理会按照配置文件进行更新。
-另一个是：APP在需要使用hybrid资源的时候，根据路由查找，及&lt;code&gt;h5_resource_route_uri&lt;/code&gt;中定义的字段，先查找下发的配置文件，如果有相应的module，再去文件系统里查找是否有下载好的文件，则下载，下载完成解压后，&lt;code&gt;callback&lt;/code&gt;查找到&lt;code&gt;fileUrl&lt;/code&gt;给APP。&lt;/p&gt;
+另一个是：APP在需要使用hybrid资源的时候，根据路由查找，及&lt;code&gt;h5_resource_route_uri&lt;/code&gt;中定义的字段，先查找下发的配置文件，如果有相应的module，再去文件系统里查找是否有下载好的文件，如果没有则下载，下载完成解压后，&lt;code&gt;callback&lt;/code&gt;查找到的&lt;code&gt;fileUrl&lt;/code&gt;给APP。&lt;/p&gt;
 
 &lt;p&gt;这里贴一下存储在APP中的目录结构：
-&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-6b7f818862cf730a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;存储目录.png&#34; /&gt;&lt;/p&gt;
+iOS的目录结构：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-f7bc238b32e5a9b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;iOS存储目录.png&#34; /&gt;
+Android的目录结构：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-dca83d2932769ff0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; width = &#34;275&#34; height = &#34;300&#34; div align=center&gt;&lt;/p&gt;
 
 &lt;p&gt;文件存储在Documents下创建的hybrid中，hybrid里面存放着各个module，与之并列的是两个字典文件，&lt;code&gt;preJsonValue&lt;/code&gt;里面是最新拉取的json配置里的数据。&lt;code&gt;preMergeValue&lt;/code&gt;里存储着新旧两次合并之后的信息。使用&lt;code&gt;NSDictionary&lt;/code&gt;自带存储方式即可&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -153,13 +159,13 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&amp;#34;moduleA&amp;#34;: {
+&lt;pre class=&#34;chroma&#34;&gt;&amp;#34;test_a&amp;#34;: {
+        &amp;#34;h5_zip_md5&amp;#34; : &amp;#34;a514cdaf63a78cc454d07904493c3178&amp;#34;,
         &amp;#34;h5_modul_id&amp;#34;: &amp;#34;12345765432&amp;#34;,
-        &amp;#34;h5_resource_name&amp;#34;: &amp;#34;serviceName&amp;#34;,
+        &amp;#34;h5_resource_name&amp;#34;: &amp;#34;测试页面A&amp;#34;,
         &amp;#34;h5_resource_version&amp;#34;: &amp;#34;1.1&amp;#34;,
-        &amp;#34;h5_resource_download_url&amp;#34;: &amp;#34;http://cdn.XXX.com/client/html.zip&amp;#34;,
-        &amp;#34;h5_resource_route_uri&amp;#34;: &amp;#34;Test://hybrid/moduleA&amp;#34;,
-        &amp;#34;h5_resource_index&amp;#34;: &amp;#34;/modules/test/test.html&amp;#34;
+        &amp;#34;h5_resource_download_url&amp;#34;: &amp;#34;http://packages.tdahai.com/hybrid/10086/15/10086_1.0.zip&amp;#34;,
+        &amp;#34;h5_resource_route_uri&amp;#34;: &amp;#34;dahai://hybrid/test_a&amp;#34;,
     }&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -169,43 +175,40 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;h5_modul_id：资源文件唯一id，可以用作埋点
 h5_resource_name：功能名称
 h5_resource_version：版本号
-h5_resource_download_url：资源下载地址
-h5_resource_route_uri：用作路由
-h5_resource_index：资源中的入口地址&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+h5_resource_download_url：资源下载地址¢
+h5_resource_route_uri：用作路由&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;根据&lt;code&gt;Test://hybrid/moduleA&lt;/code&gt;中的moduleA，在配置文件中找到相应的moduleA，
+此外注意存储目录下的&lt;code&gt;config.json&lt;/code&gt;文件，里面的内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-objc&#34; data-lang=&#34;objc&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-objc&#34; data-lang=&#34;objc&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 查找
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;__weak&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;typeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weakSelf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DHSourseMap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shareSourseMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;fileWithRoute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;@&amp;#34;Test://hybrid/moduleA&amp;#34;&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;callBack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NSURL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_Nullable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fileUrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NSError&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_Nullable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;NSLog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;@&amp;#34;hybrid文件 FileUrl %@ if error %@&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fileUrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weakSelf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;webView&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;loadFileURL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fileUrl&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;allowingReadAccessToURL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fileUrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;{
+  &amp;#34;default_index&amp;#34;: &amp;#34;/index.html&amp;#34;,
+  &amp;#34;others_index&amp;#34;: &amp;#34;/index.html&amp;#34;,
+  &amp;#34;h5_version&amp;#34;: &amp;#34;1.0&amp;#34;,
+  &amp;#34;jssdk_version&amp;#34;:&amp;#34;1.0.1&amp;#34;
+}&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;根据&lt;code&gt;Test://hybrid/moduleA&lt;/code&gt;中的moduleA，在配置文件中找到相应的moduleA，这样在文件管理中拼接处文件路径，
-&lt;code&gt;hybrid/moduleA/1.1/modules/test/test.html&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;标识出了h5的入路径，这样就可以在文件管理中拼接出加载路径，
+&lt;code&gt;hybrid/moduleA/1.1/test_a/index.html&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;文件管理查找到有这么文件，则回调给APP，APP加载&lt;code&gt;fileUrl&lt;/code&gt;
-如果没找到，则通过KVC告知下载模块系在，下载完成并解压后，再回调给APP，APP加载&lt;code&gt;fileUrl&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;文件管理查找到有这个文件，则回调路径给APP，APP加载&lt;code&gt;fileUrl&lt;/code&gt;
+如果没找到，则通过KVC告知下载模块下载，下载完成并解压后，再回调给APP，APP加载&lt;code&gt;fileUrl&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -214,6 +217,9 @@ h5_resource_index：资源中的入口地址&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&l
 &lt;pre class=&#34;chroma&#34;&gt;[weakSelf.webView loadFileURL:fileUrl allowingReadAccessToURL:fileUrl];&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;流程如下：
+&lt;img src=&#34;https://upload-images.jianshu.io/upload_images/273788-0a6c6c62d96fe05b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; width = &#34;320&#34; height = &#34;280&#34; div align=center /&gt;&lt;/p&gt;
+
 &lt;p&gt;如果有更好的思路或者错误欢迎指正、交流。&lt;/p&gt;
 </description>
       
