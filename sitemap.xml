@@ -3,6 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://whqfor.github.io/post/flutter/flutter%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2019-06-18T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whqfor.github.io/post/flutter/flutter-channel/</loc>
+    <lastmod>2019-06-13T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/post/tools/%E5%A4%9Assh/</loc>
     <lastmod>2019-04-25T15:05:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -65,6 +79,20 @@
   </url>
   
   <url>
+    <loc>https://whqfor.github.io/tags/flutter/</loc>
+    <lastmod>2019-06-18T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://whqfor.github.io/categories/flutter/</loc>
+    <lastmod>2019-06-18T14:50:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://whqfor.github.io/tags/git/</loc>
     <lastmod>2019-04-25T15:05:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -94,7 +122,7 @@
   
   <url>
     <loc>https://whqfor.github.io/post/</loc>
-    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
+    <lastmod>2019-06-18T14:50:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -122,7 +150,7 @@
   
   <url>
     <loc>https://whqfor.github.io/</loc>
-    <lastmod>2019-04-25T15:05:23+08:00</lastmod>
+    <lastmod>2019-06-18T14:50:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Flutter Channel - whqfor.github.io</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="whqfor" />
+  <meta name="description" content="Flutter定义了三种不同类型的Channel，它们分别是 ▪ BasicMessageChannel：用于传递字符串和半结构化的信息。 ▪ Me" />
+
+  <meta name="keywords" content="Hugo, theme, jane, whqfor" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://whqfor.github.io/post/flutter/flutter-channel/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Flutter Channel" />
+<meta property="og:description" content="Flutter定义了三种不同类型的Channel，它们分别是 ▪ BasicMessageChannel：用于传递字符串和半结构化的信息。 ▪ Me" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whqfor.github.io/post/flutter/flutter-channel/" /><meta property="article:published_time" content="2019-06-13T14:50:23&#43;08:00"/>
+<meta property="article:modified_time" content="2019-06-13T14:50:23&#43;08:00"/>
+
+<meta itemprop="name" content="Flutter Channel">
+<meta itemprop="description" content="Flutter定义了三种不同类型的Channel，它们分别是 ▪ BasicMessageChannel：用于传递字符串和半结构化的信息。 ▪ Me">
+
+
+<meta itemprop="datePublished" content="2019-06-13T14:50:23&#43;08:00" />
+<meta itemprop="dateModified" content="2019-06-13T14:50:23&#43;08:00" />
+<meta itemprop="wordCount" content="1464">
+
+
+
+<meta itemprop="keywords" content="Flutter," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Flutter Channel"/>
+<meta name="twitter:description" content="Flutter定义了三种不同类型的Channel，它们分别是 ▪ BasicMessageChannel：用于传递字符串和半结构化的信息。 ▪ Me"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">whqfor</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      whqfor
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://whqfor.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Flutter Channel</h1>
+      
+      <div class="post-meta">
+        <time datetime="2019-06-13" class="post-time">
+          2019-06-13
+        </time>
+        <div class="post-category">
+            <a href="https://whqfor.github.io/categories/flutter/"> Flutter </a>
+            
+          </div>
+        <span class="more-meta"> 约 1464 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#fultter侧实现">Fultter侧实现</a>
+<ul>
+<li><a href="#basicmessagechannel">BasicMessageChannel</a></li>
+<li><a href="#methodchannel">MethodChannel</a></li>
+<li><a href="#eventchannel">EventChannel</a></li>
+</ul></li>
+<li><a href="#ios侧实现">iOS侧实现</a></li>
+<li><a href="#android侧实现">Android侧实现</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<p>Flutter定义了三种不同类型的Channel，它们分别是
+    ▪   BasicMessageChannel：用于传递字符串和半结构化的信息。
+    ▪   MethodChannel：用于传递方法调用（method invocation）。
+    ▪   EventChannel: 用于数据流（event streams）的通信。</p>
+
+<p>原理讲解咸鱼团队的技术文章讲解的很通透了： <a href="https://mp.weixin.qq.com/s/FT7UFbee1AtxmKt3iJgvyg">深入理解Flutter Platform Channel</a>
+这篇文章在官方<code>platform_channel</code>的示例基础上，补全了示例子中没有实践的种方式。</p>
+
+<h3 id="fultter侧实现">Fultter侧实现</h3>
+
+<h4 id="basicmessagechannel">BasicMessageChannel</h4>
+
+<p>1 创建messageChannel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="kd">static</span> <span class="kd">const</span> <span class="n">BasicMessageChannel</span> <span class="n">messageChannel</span> <span class="o">=</span>
+<span class="n">BasicMessageChannel</span><span class="p">(</span><span class="s1">&#39;samples.flutter.io/message&#39;</span><span class="p">,</span>  <span class="n">StandardMessageCodec</span><span class="p">());</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>1.1 发送数据到NA <code>flutter -&gt; NA</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="c1">// result接收异步回调的数据
+</span><span class="c1"></span><span class="kt">String</span> <span class="n">result</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">messageChannel</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;0987654321&#39;</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>1.2 接收NA发过来的数据 <code>NA -&gt; flutter</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="n">Future</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="n">naText</span><span class="p">(</span><span class="n">parama</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="s1">&#39;log &#39;</span> <span class="o">+</span> <span class="n">parama</span><span class="p">);</span>
+  <span class="n">_naToFlutterText</span> <span class="o">=</span> <span class="n">parama</span><span class="p">;</span>
+  
+  <span class="c1">// 回调结果给NA
+</span><span class="c1"></span>  <span class="k">return</span> <span class="s1">&#39;</span><span class="si">$</span><span class="n">parama</span><span class="s1"> + 321&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// void setMessageHandler(Future&lt;T&gt; handler(T message)) 
+</span><span class="c1"></span><span class="n">messageChannel</span><span class="p">.</span><span class="n">setMessageHandler</span><span class="p">(</span><span class="n">naText</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="methodchannel">MethodChannel</h4>
+
+<p>2 创建MethodChannel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="kd">static</span> <span class="kd">const</span> <span class="n">MethodChannel</span> <span class="n">methodChannel</span> <span class="o">=</span>
+    <span class="n">MethodChannel</span><span class="p">(</span><span class="s1">&#39;samples.flutter.io/battery&#39;</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>2.1 flutter调用NA方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="k">try</span> <span class="p">{</span>
+  <span class="kd">final</span> <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">methodChannel</span><span class="p">.</span><span class="n">invokeMethod</span><span class="p">(</span><span class="s1">&#39;getBatteryLevel&#39;</span><span class="p">);</span>
+  <span class="c1">// 处理成功结果
+</span><span class="c1"></span><span class="p">}</span> <span class="n">on</span> <span class="n">PlatformException</span> <span class="p">{</span>
+  <span class="c1">// 处理异常结果
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>2.2 NA调用flutter方法 <code>NA -&gt; flutter</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="n">Future</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="n">methodHandler</span> <span class="p">(</span><span class="n">MethodCall</span> <span class="n">call</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">method</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">arguments</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="s1">&#39;回调结果&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// void setMethodCallHandler(Future&lt;dynamic&gt; handler(MethodCall call)) 
+</span><span class="c1"></span><span class="n">methodChannel</span><span class="p">.</span><span class="n">setMethodCallHandler</span><span class="p">(</span><span class="n">methodHandler</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="eventchannel">EventChannel</h4>
+
+<p>3 创建EventChannel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="kd">static</span> <span class="kd">const</span> <span class="n">EventChannel</span> <span class="n">eventChannel</span> <span class="o">=</span>
+    <span class="n">EventChannel</span><span class="p">(</span><span class="s1">&#39;samples.flutter.io/charging&#39;</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>3.1 接收NA发送过来的stream <code>NA -&gt; flutter</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart"><span class="c1">// Stream&lt;dynamic&gt; receiveBroadcastStream([ dynamic arguments ])
+</span><span class="c1">// StreamSubscription&lt;T&gt; listen(void onData(T event), {Function onError, void onDone(), bool cancelOnError});
+</span><span class="c1"></span>
+<span class="n">eventChannel</span><span class="p">.</span><span class="n">receiveBroadcastStream</span><span class="p">().</span><span class="n">listen</span><span class="p">(</span><span class="n">_onEvent</span><span class="p">,</span> <span class="nl">onError:</span> <span class="n">_onError</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="n">_onEvent</span><span class="p">(</span><span class="kt">Object</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 正常数据流
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">_onError</span><span class="p">(</span><span class="kt">Object</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 失败数据流
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="ios侧实现">iOS侧实现</h3>
+
+<p>1 创建channel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 创建massageChannel
+</span><span class="c1"></span>    <span class="n">FlutterBasicMessageChannel</span> <span class="o">*</span><span class="n">massageChannel</span> <span class="o">=</span> <span class="p">[</span><span class="n">FlutterBasicMessageChannel</span> <span class="nl">messageChannelWithName</span><span class="p">:</span><span class="s">@&#34;samples.flutter.io/message&#34;</span> <span class="nl">binaryMessenger</span><span class="p">:</span><span class="n">controller</span><span class="p">];</span>
+    
+    <span class="c1">// 创建methodChannel
+</span><span class="c1"></span>    <span class="n">FlutterMethodChannel</span> <span class="o">*</span><span class="n">methodChannel</span> <span class="o">=</span> <span class="p">[</span><span class="n">FlutterMethodChannel</span>
+    <span class="nl">methodChannelWithName</span><span class="p">:</span><span class="s">@&#34;samples.flutter.io/battery&#34;</span> <span class="nl">binaryMessenger</span><span class="p">:</span><span class="n">controller</span><span class="p">];</span>
+    
+    <span class="c1">// 创建eventChannel 代理方法里处理stream流 delegate设置为self
+</span><span class="c1"></span>    <span class="n">FlutterEventChannel</span> <span class="o">*</span><span class="n">eventChannel</span> <span class="o">=</span> <span class="p">[</span><span class="n">FlutterEventChannel</span> <span class="nl">eventChannelWithName</span><span class="p">:</span><span class="s">@&#34;samples.flutter.io/charging&#34;</span> <span class="nl">binaryMessenger</span><span class="p">:</span><span class="n">controller</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">eventChannel</span> <span class="nl">setStreamHandler</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>2 接收flutter发送过来的message和method <code>flutter -&gt; NA</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">	<span class="c1">// 接收flutter发过来的message
+</span><span class="c1"></span>		<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">massageChannel</span> <span class="nl">setMessageHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span>  <span class="n">_Nullable</span> <span class="n">message</span><span class="p">,</span> <span class="n">FlutterReply</span>  <span class="n">_Nonnull</span> <span class="n">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;receive flutter message0 %@ &#34;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+        <span class="n">callback</span><span class="p">([</span><span class="n">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&#34;%@ 12349876543211111&#34;</span><span class="p">,</span> <span class="n">message</span><span class="p">]);</span>
+    <span class="p">}];</span>
+    
+    
+    <span class="c1">// 接收flutter调用的方法
+</span><span class="c1"></span>    <span class="k">__weak</span> <span class="nf">typeof</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">methodChannel</span> <span class="nl">setMethodCallHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">FlutterMethodCall</span><span class="o">*</span> <span class="n">call</span><span class="p">,</span>
+                                          <span class="n">FlutterResult</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="k">if</span> <span class="p">([</span><span class="s">@&#34;getBatteryLevel&#34;</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="n">call</span><span class="p">.</span><span class="n">method</span><span class="p">])</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">batteryLevel</span> <span class="o">=</span> <span class="p">[</span><span class="n">weakSelf</span> <span class="n">getBatteryLevel</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">batteryLevel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">result</span><span class="p">([</span><span class="n">FlutterError</span> <span class="nl">errorWithCode</span><span class="p">:</span><span class="s">@&#34;UNAVAILABLE&#34;</span>
+                                           <span class="nl">message</span><span class="p">:</span><span class="s">@&#34;Battery info unavailable&#34;</span>
+                                           <span class="nl">details</span><span class="p">:</span><span class="nb">nil</span><span class="p">]);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">result</span><span class="p">(</span><span class="l">@(</span><span class="n">batteryLevel</span><span class="l">)</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="n">result</span><span class="p">(</span><span class="n">FlutterMethodNotImplemented</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}];</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>3 NA发送message和method到flutter <code>NA -&gt; flutter</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">		<span class="c1">//  na to flutter 发送普通消息
+</span><span class="c1"></span>    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">massageChannel</span> <span class="nl">sendMessage</span><span class="p">:</span><span class="s">@&#34;na message 参数&#34;</span> <span class="nl">reply</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span>  <span class="n">_Nullable</span> <span class="n">reply</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;na-&gt;flutter message callback %@ &#34;</span><span class="p">,</span> <span class="n">reply</span><span class="p">);</span>
+    <span class="p">}];</span>
+    
+    <span class="c1">//  na to flutter 调用flutter方法
+</span><span class="c1"></span>    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">methodChannel</span> <span class="nl">invokeMethod</span><span class="p">:</span><span class="s">@&#34;naCallFlutter&#34;</span> <span class="nl">arguments</span><span class="p">:</span><span class="s">@&#34;na method 参数&#34;</span> <span class="nl">result</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span>  <span class="n">_Nullable</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;na-&gt;flutter method callback %@ &#34;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}];</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="android侧实现">Android侧实现</h3>
+
+<p>1 创建channel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// 创建massageChannel
+</span><span class="c1"></span>     <span class="n">BasicMessageChannel</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicMessageChannel</span><span class="o">(</span><span class="n">registrar</span><span class="o">.</span><span class="na">messenger</span><span class="o">(),</span> <span class="s">&#34;flutter_message_plugin&#34;</span><span class="o">,</span> <span class="n">StringCodec</span><span class="o">.</span><span class="na">INSTANCE</span> <span class="o">);</span>
+      <span class="n">channel</span><span class="o">.</span><span class="na">setMessageHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">BasicMessageChannel</span><span class="o">.</span><span class="na">MessageHandler</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@java.lang.Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span> <span class="n">object</span><span class="o">,</span> <span class="n">BasicMessageChannel</span><span class="o">.</span><span class="na">Reply</span> <span class="n">reply</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//flutter发送消息到平台测
+</span><span class="c1"></span>        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&#34;BasicMessageChannel&#34;</span><span class="o">,</span> <span class="s">&#34;接收到Flutter的消息:&#34;</span> <span class="o">+</span> <span class="n">object</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+    <span class="n">channel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="s">&#34;发送消息到Flutter&#34;</span><span class="o">);</span>
+  <span class="c1">// 创建methodChannel
+</span><span class="c1"></span>        <span class="k">new</span> <span class="n">MethodChannel</span><span class="o">(</span><span class="n">getFlutterView</span><span class="o">(),</span> <span class="s">&#34;samples.flutter.io/battery&#34;</span><span class="o">).</span><span class="na">setMethodCallHandler</span><span class="o">(</span>
+          <span class="c1">// 直接 new MethodChannel，然后设置一个Callback来处理Flutter端调用
+</span><span class="c1"></span>                <span class="k">new</span> <span class="n">MethodCallHandler</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMethodCall</span><span class="o">(</span><span class="n">MethodCall</span> <span class="n">call</span><span class="o">,</span> <span class="n">Result</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// 在这个回调里处理从Flutter来的调用
+</span><span class="c1"></span>                        <span class="k">if</span> <span class="o">(</span><span class="n">call</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;getBatteryLevel&#34;</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="kt">int</span> <span class="n">batteryLevel</span> <span class="o">=</span> <span class="n">getBatteryLevel</span><span class="o">();</span>
+                            <span class="c1">//result是给Flutter的返回值
+</span><span class="c1"></span>                            <span class="k">if</span> <span class="o">(</span><span class="n">batteryLevel</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="n">result</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="n">batteryLevel</span><span class="o">);</span>
+                            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                                <span class="n">result</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">&#34;UNAVAILABLE&#34;</span><span class="o">,</span> <span class="s">&#34;Battery level not available.&#34;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                            <span class="o">}</span>     
+                          <span class="o">}</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                          <span class="n">result</span><span class="o">.</span><span class="na">notImplemented</span><span class="o">();</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+    
+    <span class="c1">// 创建eventChannel 代理方法里处理stream流 delegate设置为self
+</span><span class="c1"></span>    <span class="k">new</span> <span class="n">EventChannel</span><span class="o">(</span><span class="n">getFlutterView</span><span class="o">(),</span> <span class="s">&#34;samples.flutter.io/charging&#34;</span><span class="o">).</span><span class="na">setStreamHandler</span><span class="o">(</span>
+        <span class="k">new</span> <span class="n">StreamHandler</span><span class="o">()</span> <span class="o">{</span>
+          <span class="c1">// 接收电池广播的BroadcastReceiver。
+</span><span class="c1"></span>          <span class="kd">private</span> <span class="n">BroadcastReceiver</span> <span class="n">chargingStateChangeReceiver</span><span class="o">;</span>
+          <span class="nd">@Override</span>
+         <span class="c1">// 这个onListen是Flutter端开始监听这个channel时的回调，第二个参数 EventSink是用来传数据的载体。
+</span><span class="c1"></span>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onListen</span><span class="o">(</span><span class="n">Object</span> <span class="n">arguments</span><span class="o">,</span> <span class="n">EventSink</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">chargingStateChangeReceiver</span> <span class="o">=</span> <span class="n">createChargingStateChangeReceiver</span><span class="o">(</span><span class="n">events</span><span class="o">);</span>
+            <span class="n">registerReceiver</span><span class="o">(</span>
+                <span class="n">chargingStateChangeReceiver</span><span class="o">,</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_BATTERY_CHANGED</span><span class="o">));</span>
+          <span class="o">}</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCancel</span><span class="o">(</span><span class="n">Object</span> <span class="n">arguments</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 对面不再接收
+</span><span class="c1"></span>            <span class="n">unregisterReceiver</span><span class="o">(</span><span class="n">chargingStateChangeReceiver</span><span class="o">);</span>
+            <span class="n">chargingStateChangeReceiver</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">);</span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">whqfor</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-06-13</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://whqfor.github.io/tags/flutter/">Flutter</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/flutter/flutter%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Flutter通信方案</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/tools/%E5%A4%9Assh/">
+            <span class="next-text nav-default">git 不同的邮箱配置不同的ssh</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'Flutter Channel.md',
+        title: 'Flutter Channel',
+        link: decodeURI(location.href),
+        desc: 'Flutter定义了三种不同类型的Channel，它们分别是 ▪ BasicMessageChannel：用于传递字符串和半结构化的信息。 ▪ Me',
+        owner: 'whqfor',
+        repo: 'comments',
+        oauth: {
+          client_id: '4a3773392d07c2f0545b',
+          client_secret: 'a2f7f2f299848434ae40a7c20d7f22f0d554c621'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:whqfor@126.com" rel="me noopener" class="iconfont icon-email"
+        title="email">
+      </a>
+      <a href="https://github.com/whqfor" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+  <a href="https://whqfor.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2018 -
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        whqfor
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
