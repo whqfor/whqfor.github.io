@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>whqfor</copyright>
-    <lastBuildDate>Tue, 18 Jun 2019 14:50:23 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 14:50:23 +0800</lastBuildDate>
     
 	<atom:link href="https://whqfor.github.io/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>xservice_kit yaml使用</title>
+      <link>https://whqfor.github.io/post/flutter/xservice_kit-yaml%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 25 Jun 2019 14:50:23 +0800</pubDate>
+      
+      <guid>https://whqfor.github.io/post/flutter/xservice_kit-yaml%E4%BD%BF%E7%94%A8/</guid>
+      <description>xservice_kit 的功能是管理channel通信，详细介绍之后开篇再讲，接上一篇，这篇主要介绍使用：官方文档 里面有介绍、集成说明、使用文档、原理介绍，如果看</description>
+    </item>
     
     <item>
       <title>Flutter通信方案</title>
